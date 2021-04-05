@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tambo/util/places.dart';
+import 'package:tambo/util/stepper.dart';
 import 'package:tambo/widgets/icon_badge.dart';
 
 class Details extends StatelessWidget {
@@ -86,13 +87,35 @@ class Details extends StatelessWidget {
                   "${Place.getPlaces(context)[0]["price"]}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 17,
+                    fontSize: 20,
                   ),
                   maxLines: 1,
                   textAlign: TextAlign.left,
                 ),
               ),
               SizedBox(height: 40),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Cantidad",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  maxLines: 1,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                child: StepperTouch(
+                  initialValue: 1,
+                  direction: Axis.horizontal,
+                  withSpring: false,
+                  onChanged: (int value) => print('new value $value'),
+                ),
+              ),
+              SizedBox(height: 10.0),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -105,7 +128,7 @@ class Details extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 20.0),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
