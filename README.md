@@ -19,11 +19,6 @@ flutter initl
 ## Feature-2
  La internacionalización de la app
  
-## Bitácora
-
-- Feature-1: 2020-12-19, Primera versión: Los requisitos de la app son una descripción de las características y funcionalidades que requiere el Tambo, para fortalecer su turismo .
-- Feature-2: 2020-12-27, Segunda versión: Se detallo en los requerimientos la necesidad de que la app tenga la internacionalización, para que usuarios de otros paises puedan utilizar, en este caso Spanish y English son los idiomas por defecto .
-
-
+ 
  
  
