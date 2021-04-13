@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tambo/screens/home.dart';
+import 'package:tambo/screens/pay.dart';
+import 'package:tambo/screens/user.dart';
 import 'package:tambo/widgets/icon_badge.dart';
 
 class MainScreen extends StatefulWidget {
@@ -10,31 +12,31 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
   int _page = 0;
-
+  var paginas = [Home(), User(), Pay(), User()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: PageView(
-            physics: NeverScrollableScrollPhysics(),
-            controller: _pageController,
-            onPageChanged: onPageChanged,
-            children: List.generate(4, (index) => Home()),
-          ),
-          bottomNavigationBar: BottomAppBar(
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SizedBox(width: 7.0),
-                barIcon(icon: Icons.home, page: 0),
-                barIcon(icon: Icons.favorite, page: 1),
-                barIcon(icon: Icons.mode_comment, page: 2, badge: true),
-                barIcon(icon: Icons.person, page: 3),
-                SizedBox(width: 7.0),
-              ],
-            ),
-            color: Theme.of(context).primaryColor,
-          ),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        onPageChanged: onPageChanged,
+        children: List.generate(4, (index) => paginas[index]),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            SizedBox(width: 7.0),
+            barIcon(icon: Icons.home, page: 0),
+            barIcon(icon: Icons.favorite, page: 1),
+            barIcon(icon: Icons.mode_comment, page: 2, badge: true),
+            barIcon(icon: Icons.person, page: 3),
+            SizedBox(width: 7.0),
+          ],
+        ),
+        color: Theme.of(context).primaryColor,
+      ),
     );
   }
 
