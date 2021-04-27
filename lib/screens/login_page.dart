@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tambo/screens/main_screen.dart';
-import 'package:tambo/screens/report.dart';
+import 'package:tambo/screens/my_home_page.dart';
 import 'package:tambo/screens/user.dart';
 
 class LoginPage extends StatelessWidget {
@@ -105,17 +105,14 @@ class LoginPage extends StatelessWidget {
         color: Colors.deepPurple,
         textColor: Colors.white,
         onPressed: () {
-          if (this.lastNameController.text.endsWith('usuario')) {
+ 
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MainScreen()),
+              MaterialPageRoute(builder: (context) => this.lastNameController.text.endsWith('usuario')?MainScreen():MyHomePage()),
             );
-          } else {
-             Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyHomePage()),
-            );
-          }
+ 
+ 
+    
         });
   }
 

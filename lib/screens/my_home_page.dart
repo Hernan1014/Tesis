@@ -248,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(icon: Icon(
               FontAwesomeIcons.chartLine), onPressed: () {
-               // Navigator.of(context).pop();
+                Navigator.of(context).pop();
             //
           }),
         ],
