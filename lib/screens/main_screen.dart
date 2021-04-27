@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tambo/screens/history.dart';
-import 'package:tambo/screens/login_page.dart';
+import 'package:tambo/screens/home.dart';
+
 import 'package:tambo/screens/pay.dart';
 import 'package:tambo/screens/user.dart';
 import 'package:tambo/widgets/icon_badge.dart';
@@ -13,7 +14,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
   int _page = 0;
-  var paginas = [LoginPage(), Pay(), History(), User()];
+  var paginas = [Home(), Pay(), History(), User()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

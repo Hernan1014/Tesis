@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tambo/screens/pay.dart';
 import 'package:tambo/util/places.dart';
 import 'package:tambo/util/stepper.dart';
 import 'package:tambo/widgets/icon_badge.dart';
@@ -149,7 +150,12 @@ class Details extends StatelessWidget {
         child: Icon(
           Icons.payment,
         ),
-        onPressed: () {},
+        onPressed: () {   
+          Navigator.push(  
+          context,  
+          MaterialPageRoute(builder: (context) => Pay()),  
+        );     
+  },
       ),
     );
   }

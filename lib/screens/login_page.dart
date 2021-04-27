@@ -21,7 +21,6 @@ class LoginPage extends StatelessWidget {
 
   Widget _loginForm(BuildContext context) {
 
- 
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -103,7 +102,6 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.0),
 
           child: PasswordField(
-     
             helperText: 'No más de 8 caracteres.',
             labelText: 'Contraseña *',
             onFieldSubmitted: (String value) {

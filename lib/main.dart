@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tambo/screens/home.dart';
+import 'package:tambo/screens/login_page.dart';
 import 'package:tambo/screens/main_screen.dart';
+import 'package:tambo/screens/pay.dart';
 import 'package:tambo/util/const.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tambo/generated/l10n.dart';
@@ -21,7 +24,12 @@ class _MyAppState extends State<MyApp> {
       title: Constants.appName,
       theme: Constants.lightTheme,
       darkTheme: Constants.darkTheme,
-      home: MainScreen(),
+        initialRoute: 'login',
+        routes: {
+          'login'    : ( BuildContext context ) => LoginPage(),
+          'registro' : ( BuildContext context ) => MainScreen(),
+          'pay' : ( BuildContext context ) => Pay(),
+        },
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
