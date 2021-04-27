@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+ 
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -246,8 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
         }),
         title: Text('Ventas'),
         actions: <Widget>[
-          IconButton(icon: Icon(
-              FontAwesomeIcons.chartLine), onPressed: () {
+          IconButton(icon: Icon(Icons.pageview), onPressed: () {
                 Navigator.of(context).pop();
             //
           }),
