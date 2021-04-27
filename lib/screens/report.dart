@@ -177,7 +177,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
   Material mychart2Items(String title, String priceVal,String subtitle) {
     return Material(
       color: Colors.white,
