@@ -155,7 +155,7 @@ class Details extends StatelessWidget {
           context,  
           MaterialPageRoute(builder: (context) => Pay()),  
         );     
-  },
+      },
       ),
     );
   }

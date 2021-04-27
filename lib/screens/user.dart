@@ -40,12 +40,14 @@ class _UserState extends State<User> {
           // "Name" form.
           TextFormField(
             textCapitalization: TextCapitalization.words,
+            initialValue: 'Hernan Tutillo',
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
               icon: Icon(Icons.person),
               hintText: '¿Cómo te llama?',
               labelText: 'Nombre *',
+              
             ),
             onSaved: (String value) {
               this._name = value;
@@ -56,6 +58,7 @@ class _UserState extends State<User> {
           const SizedBox(height: 24.0),
           // "Phone number" form.
           TextFormField(
+            initialValue: '09987517863',
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
@@ -77,6 +80,7 @@ class _UserState extends State<User> {
           const SizedBox(height: 24.0),
           // "Email" form.
           TextFormField(
+            initialValue: 'tutillo@est.ucacue.edu.ec',
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
@@ -93,6 +97,7 @@ class _UserState extends State<User> {
           const SizedBox(height: 24.0),
           // "Life story" form.
           TextFormField(
+            initialValue: 'Canar, Calle guayaquil Tienda Susanita',
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Cuéntanos acerca de tí',
@@ -104,6 +109,7 @@ class _UserState extends State<User> {
           const SizedBox(height: 24.0),
           // "Salary" form.
           TextFormField(
+            initialValue: '100',
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -114,28 +120,8 @@ class _UserState extends State<User> {
           ),
           const SizedBox(height: 24.0),
           // "Password" form.
-          PasswordField(
-            fieldKey: _passwordFieldKey,
-            helperText: 'No más de 8 caracteres.',
-            labelText: 'Contraseña *',
-            onFieldSubmitted: (String value) {
-              setState(() {
-                this._password = value;
-              });
-            },
-          ),
-          const SizedBox(height: 24.0),
-          // "Re-type password" form.
-          TextFormField(
-            enabled: this._password != null && this._password.isNotEmpty,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              filled: true,
-              labelText: 'Vuelva a escribir la contraseña',
-            ),
-            maxLength: 8,
-            obscureText: true,
-          ),
+        
+         
         ],
       ),
     );

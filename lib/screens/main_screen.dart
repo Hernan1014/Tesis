@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tambo/screens/history.dart';
 import 'package:tambo/screens/home.dart';
 
-import 'package:tambo/screens/pay.dart';
 import 'package:tambo/screens/user.dart';
 import 'package:tambo/widgets/icon_badge.dart';
+
+import 'list_view.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
   int _page = 0;
-  var paginas = [Home(), Pay(), History(), User()];
+  var paginas = [Home(), ListViewBuilderExample(), History(), User()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
