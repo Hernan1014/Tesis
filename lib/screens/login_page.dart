@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tambo/screens/main_screen.dart';
+import 'package:tambo/screens/report.dart';
 import 'package:tambo/screens/user.dart';
 
 class LoginPage extends StatelessWidget {
+  TextEditingController lastNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,7 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 30.0),
                 _crearPassword('bloc'),
                 SizedBox(height: 30.0),
-                _crearBoton('bloc',context)
+                _crearBoton('bloc', context)
               ],
             ),
           ),
@@ -63,6 +65,7 @@ class LoginPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextFormField(
+         controller: lastNameController,
         decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           filled: true,
@@ -71,7 +74,7 @@ class LoginPage extends StatelessWidget {
         ),
         keyboardType: TextInputType.emailAddress,
         onSaved: (String value) {
-          print('email=$value');
+   
         },
       ),
     );
@@ -101,11 +104,18 @@ class LoginPage extends StatelessWidget {
         elevation: 0.0,
         color: Colors.deepPurple,
         textColor: Colors.white,
-        onPressed:() {
-            Navigator.push(  
-          context,  
-          MaterialPageRoute(builder: (context) => MainScreen()),  
-        );  
+        onPressed: () {
+          if (this.lastNameController.text.endsWith('usuario')) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainScreen()),
+            );
+          } else {
+             Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+            );
+          }
         });
   }
 
