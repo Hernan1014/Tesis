@@ -11,14 +11,6 @@ import 'package:tambo/widgets/vertical_place_item.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var producto = new Producto(
-        id: '4',
-        nombre: 'sol',
-        descripcion: 'Holashfjh djhaldjas ',
-        img: 'assets/3.jpeg',
-        location: 'Tambo',
-        precio: 15);
-    DBProvider.db.nuevoProducto(producto);
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[

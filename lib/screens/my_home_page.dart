@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:tambo/screens/producto_create.dart';
  
 
 class MyHomePage extends StatefulWidget {
@@ -229,6 +230,14 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(icon: Icon(Icons.pageview), onPressed: () {
                 Navigator.of(context).pop();
+            //
+          }),
+           IconButton(icon: Icon(Icons.create), onPressed: () {
+                
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProductoCreate()),
+            );
             //
           }),
         ],
