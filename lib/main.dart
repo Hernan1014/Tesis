@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tambo/screens/home.dart';
 import 'package:tambo/screens/login_page.dart';
 import 'package:tambo/screens/main_screen.dart';
 import 'package:tambo/screens/pay.dart';

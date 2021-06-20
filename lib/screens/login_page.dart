@@ -3,8 +3,14 @@ import 'package:tambo/screens/main_screen.dart';
 import 'package:tambo/screens/my_home_page.dart';
 import 'package:tambo/screens/user.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController lastNameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

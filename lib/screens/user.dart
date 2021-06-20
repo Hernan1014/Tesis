@@ -11,13 +11,12 @@ class User extends StatefulWidget {
 // Adapted from the text form demo in official gallery app:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/text_form_field_demo.dart
 class _UserState extends State<User> {
-  final GlobalKey<FormFieldState<String>> _passwordFieldKey =
-      GlobalKey<FormFieldState<String>>();
+ 
 
   String _name;
   String _phoneNumber;
   String _email;
-  String _password;
+ 
 
   String _validateName(String value) {
     if (value.isEmpty) return 'Name is required.';

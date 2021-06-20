@@ -25,14 +25,7 @@ class _ProductoCreateState extends State<ProductoCreate> {
         ),
       )
       .toList();
-  final List<PopupMenuItem<String>> _popUpMenuItems = menuItems
-      .map(
-        (String value) => PopupMenuItem<String>(
-          value: value,
-          child: Text(value),
-        ),
-      )
-      .toList();
+ 
 
   String _btn2SelectedVal = 'assets/1.jpeg';
  
@@ -78,7 +71,7 @@ class _ProductoCreateState extends State<ProductoCreate> {
     );
   }
 
-  bool _showPassword = false;
+ 
 
   @override
   Widget build(BuildContext context) {
