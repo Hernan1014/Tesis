@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tambo/model/producto.dart';
 
 import '../screens/details.dart';
 
 class HorizontalPlaceItem extends StatelessWidget {
-  final Map place;
+  final Producto producto;
 
-  HorizontalPlaceItem({this.place});
+  HorizontalPlaceItem({this.producto});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class HorizontalPlaceItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  "${place["img"]}",
+                  "${producto.img}",
                   height: 178.0,
                   width: 140.0,
                   fit: BoxFit.cover,
@@ -30,7 +31,7 @@ class HorizontalPlaceItem extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${place["name"]}",
+                  "${producto.nombre}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15.0,
@@ -43,7 +44,7 @@ class HorizontalPlaceItem extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${place["location"]}",
+                  "${producto.location}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13.0,

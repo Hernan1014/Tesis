@@ -41,4 +41,12 @@ class DBProvider {
     return res;
   } 
 
+    Future<List<Producto>> getAllProducto() async {
+    final db = await database;
+    final resp = await db.query('producto');
+    List<Producto> recupera =
+        resp.isNotEmpty ? resp.map((c) => Producto.fromJson(c)).toList() : [];
+    return recupera;
+  }
+
 }
