@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tambo/model/producto.dart';
 import 'package:tambo/screens/pay.dart';
-import 'package:tambo/util/places.dart';
 import 'package:tambo/util/stepper.dart';
 import 'package:tambo/widgets/icon_badge.dart';
 
-class Details extends StatelessWidget {
+class Details extends StatefulWidget {
+
+  final Producto producto;
+  Details({Key key, this.producto}) : super(key: key);
+  @override
+  _DetailsState createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +49,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${Place.getPlaces(context)[0]["name"]}",
+                      "${widget.producto.nombre}",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
@@ -69,7 +77,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${Place.getPlaces(context)[0]["location"]}",
+                      "${widget.producto.location}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -85,7 +93,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${Place.getPlaces(context)[0]["price"]}",
+                  "${widget.producto.precio}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -133,7 +141,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${Place.getPlaces(context)[0]["details"]}",
+                  "${widget.producto.descripcion}",
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,
@@ -153,7 +161,7 @@ class Details extends StatelessWidget {
         onPressed: () {   
           Navigator.push(  
           context,  
-          MaterialPageRoute(builder: (context) => Pay()),  
+          MaterialPageRoute(builder: (context) => Pay(producto: widget.producto,)),  
         );     
       },
       ),
@@ -164,29 +172,18 @@ class Details extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(left: 20),
       height: 250.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        primary: false,
-        itemCount: Place.getPlaces(context) == null
-            ? 0
-            : Place.getPlaces(context).length,
-        itemBuilder: (BuildContext context, int index) {
-          Map place = Place.getPlaces(context)[index];
-
-          return Padding(
+      child:  Padding(
             padding: EdgeInsets.only(right: 10.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(
-                "${place["img"]}",
+                "${widget.producto.img}",
                 height: 250.0,
                 width: MediaQuery.of(context).size.width - 40.0,
                 fit: BoxFit.cover,
               ),
             ),
-          );
-        },
-      ),
+          )
     );
   }
 }

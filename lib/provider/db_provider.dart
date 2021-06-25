@@ -4,6 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:tambo/model/producto.dart';
+import 'package:tambo/model/venta.dart';
 
 class DBProvider {
   static Database _database;
@@ -17,8 +18,8 @@ class DBProvider {
 
   initDB() async {
     Directory documentDirecotry = await getApplicationDocumentsDirectory();
-    String path = join(documentDirecotry.path, 'Ucacue1.db');
-    return await openDatabase(path, version: 211, onOpen: (db) {},
+    String path = join(documentDirecotry.path, 'Ucacue3.db');
+    return await openDatabase(path, version: 213, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute(
           'CREATE TABLE producto ('
@@ -27,6 +28,14 @@ class DBProvider {
           ',nombre       VARCHAR(200)'
           ',descripcion     VARCHAR(200)'
           ',location    VARCHAR(200)'
+          ',img    VARCHAR(200)'
+          ');');   
+
+        await db.execute(
+          'CREATE TABLE venta ('
+          'id     VARCHAR(200)'
+          ',precio       INTEGER'
+          ',nombre       VARCHAR(200)'
           ',img    VARCHAR(200)'
           ');');   
     });
@@ -43,6 +52,22 @@ class DBProvider {
     final resp = await db.query('producto');
     List<Producto> recupera =
         resp.isNotEmpty ? resp.map((c) => Producto.fromJson(c)).toList() : [];
+    return recupera;
+  }
+
+
+
+  nuevaVenta(Venta venta) async {
+    final db = await database;
+    final res = await db.insert('venta', venta.toJson());
+    return res;
+  } 
+
+    Future<List<Venta>> getAllVenta() async {
+    final db = await database;
+    final resp = await db.query('venta');
+    List<Venta> recupera =
+        resp.isNotEmpty ? resp.map((c) => Venta.fromJson(c)).toList() : [];
     return recupera;
   }
 

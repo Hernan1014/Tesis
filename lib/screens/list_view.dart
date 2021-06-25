@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:tambo/util/places.dart';
+import 'package:tambo/model/venta.dart';
+import 'package:tambo/provider/db_provider.dart';
 
 class ListViewBuilderExample extends StatelessWidget {
   const ListViewBuilderExample({Key key}) : super(key: key);
@@ -11,35 +10,89 @@ class ListViewBuilderExample extends StatelessWidget {
     const numItems = 20;
     const _biggerFont = TextStyle(fontSize: 18.0);
 
-    Widget _buildRow(int idx, int numero) {
-      return ListTile(
-        leading: CircleAvatar(
-           child: Image.asset(
-                "${Place.getPlaces(context)[numero]["img"]}",
-               
-                width: MediaQuery.of(context).size.width - 40.0,
-                fit: BoxFit.cover,
-              ),
+    Widget _buildRow() {
+      return Container(
+        child: FutureBuilder(
+          future: DBProvider.db.getAllVenta(),
+          builder: (BuildContext context, AsyncSnapshot<List<Venta>> snapshot) {
+            assert(context != null);
+            if (snapshot.hasData) {
+              return ListView.builder(
+                scrollDirection: Axis.horizontal,
+                primary: false,
+                itemCount: snapshot.data == null ? 0.0 : snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Venta venta = snapshot.data[index];
+                  return Text(venta.nombre);
+                },
+              );
+
+              // ' ${}- ${snapshot.data[index]['num']}  -  ${snapshot.data[index]['chek']}'),
+            }
+            return Container(child: Center(child: CircularProgressIndicator()));
+          },
         ),
-         
-        title: Text(
-           "${Place.getPlaces(context)[numero]["name"]} ${numero}Kg",
-          style: _biggerFont,
-        ),
-        trailing: const Icon(Icons.dashboard),
       );
+
+      /* */
     }
 
-    return ListView.builder(
-      itemCount: numItems * 2,
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (BuildContext context, int i) {
-        if (i.isOdd) return const Divider();
-        final index = i ~/ 2 + 1;
-        Random rnd = new Random();
-        final r = 1 + rnd.nextInt(5 - 1);
-        return _buildRow(index, r);
-      },
-    );
+    buildHorizontalList(BuildContext context) {
+      return Container(
+          padding: EdgeInsets.only(top: 10.0, left: 20.0),
+          height: 250.0,
+          width: MediaQuery.of(context).size.width,
+          child: FutureBuilder(
+            future: DBProvider.db.getAllVenta(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Venta>> snapshot) {
+              assert(context != null);
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  primary: false,
+                  shrinkWrap: true,
+                  itemCount: snapshot.data == null ? 0.0 : snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Venta venta = snapshot.data[index];
+                    return ListTile(
+                      leading: CircleAvatar(
+                        child: Image.asset(
+                          "${venta.img}",
+                          width: MediaQuery.of(context).size.width - 40.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      title: Text(
+                        "${venta.nombre} ${venta.precio}\$",
+                        style: _biggerFont,
+                      ),
+                      trailing: const Icon(Icons.dashboard),
+                    );
+                  },
+                );
+
+                // ' ${}- ${snapshot.data[index]['num']}  -  ${snapshot.data[index]['chek']}'),
+              }
+              return Container(
+                  child: Center(child: CircularProgressIndicator()));
+            },
+          )
+
+          /* ListView.builder(
+        scrollDirection: Axis.horizontal,
+        primary: false,
+        itemCount:  DBProvider.db.getAllProducto() == null
+            ? 0.0
+            :  DBProvider.db.getAllProducto().length,
+        itemBuilder: (BuildContext context, int index) {
+          Map place = Place.getPlaces(context).reversed.toList()[index];
+          return HorizontalPlaceItem(place: place);
+        },
+      ),*/
+          );
+    }
+
+    return buildHorizontalList(context);
   }
 }
