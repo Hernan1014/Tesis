@@ -5,7 +5,6 @@ import 'package:tambo/util/stepper.dart';
 import 'package:tambo/widgets/icon_badge.dart';
 
 class Details extends StatefulWidget {
-
   final Producto producto;
   Details({Key key, this.producto}) : super(key: key);
   @override
@@ -13,8 +12,11 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  num total = 0;
+  num contador = 0;
   @override
   Widget build(BuildContext context) {
+    this.calcular(contador);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -93,7 +95,7 @@ class _DetailsState extends State<Details> {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${widget.producto.precio}",
+                  "${this.total}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -121,7 +123,10 @@ class _DetailsState extends State<Details> {
                   initialValue: 1,
                   direction: Axis.horizontal,
                   withSpring: false,
-                  onChanged: (int value) => print('new value $value'),
+                  onChanged: (int value) {
+                    this.contador = value;
+                    this.calcular(contador);
+                  },
                 ),
               ),
               SizedBox(height: 10.0),
@@ -158,32 +163,47 @@ class _DetailsState extends State<Details> {
         child: Icon(
           Icons.payment,
         ),
-        onPressed: () {   
-          Navigator.push(  
-          context,  
-          MaterialPageRoute(builder: (context) => Pay(producto: widget.producto,)),  
-        );     
-      },
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Pay(
+                      producto: widget.producto,
+                      total: this.total,
+                    )),
+          );
+        },
       ),
     );
   }
 
   buildSlider(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20),
-      height: 250.0,
-      child:  Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(
-                "${widget.producto.img}",
-                height: 250.0,
-                width: MediaQuery.of(context).size.width - 40.0,
-                fit: BoxFit.cover,
-              ),
+        padding: EdgeInsets.only(left: 20),
+        height: 250.0,
+        child: Padding(
+          padding: EdgeInsets.only(right: 10.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.asset(
+              "${widget.producto.img}",
+              height: 250.0,
+              width: MediaQuery.of(context).size.width - 40.0,
+              fit: BoxFit.cover,
             ),
-          )
-    );
+          ),
+        ));
+  }
+
+  void calcular(int i) {
+
+      if (this.contador == 0) {
+        this.total = widget.producto.precio;
+      } else {
+        this.total = widget.producto.precio * contador;
+      }
+    setState(() {
+      print(this.contador);
+    });
   }
 }

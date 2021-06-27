@@ -8,7 +8,8 @@ import 'package:tambo/provider/db_provider.dart';
 
 class Pay extends StatefulWidget {
   final Producto producto;
-  Pay({Key key, this.producto}) : super(key: key);
+  final num total;
+  Pay({Key key, this.producto, this.total}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -25,6 +26,7 @@ class PayState extends State<Pay> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.total);
     return MaterialApp(
       title: 'Flutter Credit Card View Demo',
       debugShowCheckedModeBanner: false,
@@ -77,7 +79,7 @@ class PayState extends State<Pay> {
     Venta v = new Venta(
         id: '12',
         nombre: widget.producto.nombre,
-        precio: widget.producto.precio,
+        precio: widget.total,
         img: widget.producto.img);
     print(v.toJson());
     DBProvider.db.nuevaVenta(v);
