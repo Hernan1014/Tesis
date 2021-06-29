@@ -282,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: myTextItems("Ventas ok", "15"),
+              child: myTextItems("Sector", "Cañar"),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

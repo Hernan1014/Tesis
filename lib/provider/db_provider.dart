@@ -18,8 +18,8 @@ class DBProvider {
 
   initDB() async {
     Directory documentDirecotry = await getApplicationDocumentsDirectory();
-    String path = join(documentDirecotry.path, 'Ucacue3.db');
-    return await openDatabase(path, version: 213, onOpen: (db) {},
+    String path = join(documentDirecotry.path, 'Ucacue4.db');
+    return await openDatabase(path, version: 214, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute(
           'CREATE TABLE producto ('

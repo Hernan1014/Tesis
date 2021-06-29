@@ -22,6 +22,7 @@ class _ProductoCreateState extends State<ProductoCreate> {
     'assets/4.jpeg',
     'assets/5.jpeg',
     'assets/6.jpeg',
+    'assets/fresas.jpg',
   ];
   final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
       .map(
